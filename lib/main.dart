@@ -22,6 +22,8 @@ class FlutterShot extends StatelessWidget {
 
 class RandomWordsState extends State<RandomWords> {
   final List<WordPair> _suggestions = <WordPair>[];
+  final Set<WordPair> _saved = new Set<WordPair>();
+
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
@@ -51,8 +53,14 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair wordPair) {
+    final bool isSavedAlready = _saved.contains(wordPair);
+
     return ListTile(
       title: Text(wordPair.asPascalCase, style: _biggerFont,),
+      trailing: Icon(
+        isSavedAlready ? Icons.favorite : Icons.favorite_border,
+        color: isSavedAlready ? Colors.red : null,
+      ),
     );
   }
 }
