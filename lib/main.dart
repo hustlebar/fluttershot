@@ -11,11 +11,27 @@ class FlutterShot extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Shot'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () => _pushSaved(context),
+            )
+          ],
         ),
         body: Center(
           child: RandomWords(),
         ),
       ),
+    );
+  }
+
+  void _pushSaved(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          _saved
+        }
+      )
     );
   }
 }
