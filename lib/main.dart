@@ -46,7 +46,7 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
 //    final WordPair wordPair = WordPair.random();
 //    return Text(wordPair.asPascalCase);
-    return _buildSuggestions();
+//    return _buildSuggestions();
   }
 
   ListView _buildSuggestions() {
