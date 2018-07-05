@@ -8,30 +8,10 @@ class FlutterShot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Shot',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Shot'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.list),
-              onPressed: () => _pushSaved(context),
-            )
-          ],
-        ),
-        body: Center(
-          child: RandomWords(),
-        ),
+      home: RandomWords(),
+      theme: ThemeData(
+        primaryColor: Colors.white
       ),
-    );
-  }
-
-  void _pushSaved(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) {
-          _saved
-        }
-      )
     );
   }
 }
@@ -47,6 +27,43 @@ class RandomWordsState extends State<RandomWords> {
 //    final WordPair wordPair = WordPair.random();
 //    return Text(wordPair.asPascalCase);
 //    return _buildSuggestions();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Shot'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.list),
+            onPressed: _pushSaved,
+          )
+        ],
+      ),
+      body: Center(
+        child: _buildSuggestions(),
+      ),
+    );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(
+        MaterialPageRoute<void>(
+            builder: (BuildContext context) {
+              final Iterable<ListTile> tiles = _saved.map((WordPair pair) {
+                return ListTile(
+                  title: Text(pair.asPascalCase, style: _biggerFont,),
+                );
+              });
+
+              var divided = ListTile.divideTiles(context: context, tiles: tiles).toList();
+
+              return Scaffold(
+                appBar: AppBar(
+                  title: const Text('Saved Titles'),
+                ),
+                body: ListView(children: divided,),
+              );
+            }
+        )
+    );
   }
 
   ListView _buildSuggestions() {
