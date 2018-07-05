@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'friendlychat/friendlychat.dart';
 
-void main() => runApp(new FlutterShot());
+void main() => runApp(new FriendlyChat());
 
 class FlutterShot extends StatelessWidget {
   @override
