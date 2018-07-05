@@ -6,7 +6,8 @@ class FriendlyChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Friendly Chat',
-      home: ChatScreen()
+      home: ChatScreen(),
+//      theme: ThemeData(primaryColor: Colors.red),
     );
   }
 }
