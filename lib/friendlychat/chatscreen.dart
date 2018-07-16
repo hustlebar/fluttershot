@@ -42,11 +42,30 @@ class ChatScreenState extends State<ChatScreen> {
                 icon: Icon(Icons.send),
                 onPressed: () => _onSubmit(_controller.text),
               ),
+            ),
+
+            GestureDetector(
+              child: Container(
+                child: IconButton(
+                  icon: Icon(Icons.add),
+//                  onPressed: () => print('Called'),
+                ),
+              ),
+//              onLongPress: () => _onLongPressed
+              onTapDown: (tabDownDetails) {
+                  print('Tab down');
+                  print(tabDownDetails.globalPosition.direction);
+                  print(tabDownDetails.globalPosition.distance);
+              },
             )
           ],
         ),
       ),
     );
+  }
+
+  void _onLongPressed() {
+    print('Long pressed');
   }
 
   void _onSubmit(String value) {
