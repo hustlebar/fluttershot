@@ -53,9 +53,15 @@ class ChatScreenState extends State<ChatScreen> {
               ),
 //              onLongPress: () => _onLongPressed
               onTapDown: (tabDownDetails) {
-                  print('Tab down');
-                  print(tabDownDetails.globalPosition.direction);
-                  print(tabDownDetails.globalPosition.distance);
+//                  print('Tab down');
+//                  print(tabDownDetails.globalPosition.direction);
+//                  print(tabDownDetails.globalPosition.distance);
+              },
+              onTapUp: (tabUpDetails) {
+                print('Tab up');
+                print(tabUpDetails.globalPosition.direction);
+                print(tabUpDetails.globalPosition.distanceSquared);
+                print(tabUpDetails.globalPosition.distance);
               },
             )
           ],
