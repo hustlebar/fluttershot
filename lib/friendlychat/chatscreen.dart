@@ -16,11 +16,12 @@ class ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: const Text('Friendly Chat'),
       ),
-      body: _buildTextComposer(),
+      body: _eventWidgets(),
     );
   }
 
   Widget _buildTextComposer() {
+
     return IconTheme(
       data: IconThemeData(
         color: Theme.of(context).accentColor
@@ -70,8 +71,36 @@ class ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void _onLongPressed() {
-    print('Long pressed');
+  Widget _eventWidgets() {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        children: <Widget>[
+          Listener(
+            onPointerDown: (downEvent) => _onPointerDown(downEvent),
+            onPointerUp: (upEvent) => _onPointerUp(upEvent),
+            child: Container(
+              child: IconButton(
+                icon: Icon(Icons.cloud_circle),
+              )
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  void _onPointerDown(PointerDownEvent event) {
+//    print('Enters pointer down');
+//    print(event.delta.dx);
+  }
+
+  void _onPointerUp(PointerUpEvent event) {
+    print('Enters pointer up event');
+    print('position: ${event.position}');
+    print('Pressure ${event.pressure}');
+    print('Pressure min ${event.pressureMin}');
+    print('Pressure max ${event.pressureMax}');
   }
 
   void _onSubmit(String value) {
