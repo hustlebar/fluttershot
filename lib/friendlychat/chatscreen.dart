@@ -101,6 +101,7 @@ class ChatScreenState extends State<ChatScreen> {
     print('Pressure ${event.pressure}');
     print('Pressure min ${event.pressureMin}');
     print('Pressure max ${event.pressureMax}');
+    print('Radius min ${event.radiusMin} and Radius max ${event.radiusMax}');
   }
 
   void _onSubmit(String value) {
